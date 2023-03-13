@@ -1,6 +1,5 @@
 from client import model_api
 
-
 '''
 response:
 {
@@ -24,6 +23,8 @@ response:
   }
 }
 '''
+
+
 def create_embedding(text_list):
     embed_model = "text-embedding-ada-002"
 

@@ -18,6 +18,7 @@ def task():
                     routine_spliter.store_index(content, summary)
                 else:
                     logger.info("session abandon: session_id: %s, user_name: %s", content.session_id, content.user_name)
+                session.session_mng.remove_session_data(session_id)
         except Exception as e:
             logger.error("executeTask error: %s", e)
         time.sleep(5)

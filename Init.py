@@ -3,6 +3,7 @@ from client.index_mng import client
 from config import conf
 from biz.cache import refresh
 
+
 def MustInit():
     index_name = conf.config_mng.get_index_name()
     if client.index_exist(index_name) is not True:

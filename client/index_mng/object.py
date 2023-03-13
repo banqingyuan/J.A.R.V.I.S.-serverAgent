@@ -1,4 +1,4 @@
-
+from client.log import logger
 
 class IndexRes:
     def __init__(self, text, metadata):
@@ -15,6 +15,8 @@ class QueryRes:
     def get_efficient_val(self):
         context_list = []
         for item in self.matches:
-            if item["score"] > 0.8:
+            if item["score"] > 0.7:
                 context_list.append(item["metadata"]["text"])
+            else:
+                logger.info("drop context: score: %f", item["score"])
         return context_list

@@ -38,5 +38,5 @@ def store_index(session_data: session_object.SessionData, summary):
     meta_data = meta.MetaData(meta.MetaType_Communication, [], session_id=session_data.session_id, text=summary)
     id = meta_data.new_idx_id()
     data = meta_data.new_meta_data()
-    client.index_client.upsert([id, ebd_res.data[0]["embedding"], data], namespace=session_data.user_name)
-    logger.info("store index success: user_name: %s, idx_id: %s, meta_data:%s", session_data.user_name, id, json.dumps(meta_data))
+    client.index_client.upsert([(id, ebd_res.data[0]["embedding"], data)], namespace=session_data.user_name)
+    logger.info("store index success: user_name: %s, idx_id: %s, meta_data:%s, resp:%s", session_data.user_name, id, meta_data.to_str())

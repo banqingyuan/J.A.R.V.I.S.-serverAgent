@@ -10,6 +10,7 @@ index的可存放内容需要通过metad_data进行分类
     "text": ""
 }
 '''
+import json
 import time
 from typing import List
 
@@ -32,6 +33,16 @@ class MetaData:
 
         return meta_data
 
+    def to_str(self):
+        dic = {
+            "type": self.type,
+            "ts": self.ts,
+            "tag": self.tag,
+            "session_id": self.session_id,
+            "text": self.text,
+        }
+        return json.dumps(dic)
+
     def new_idx_id(self):
         id = str(self.ts)
         id = id + '_' + self.type
@@ -39,7 +50,8 @@ class MetaData:
             id = id + self.session_id
         return id
 
-    def __init__(self, type: str, tag: List[str], text: str, ts: int = int(time.strftime("%Y%m%d%H%M", time.localtime())),
+    def __init__(self, type: str, tag: List[str], text: str,
+                 ts: int = int(time.strftime("%Y%m%d%H%M", time.localtime())),
                  session_id: str = ""):
         self.type = type
         self.ts = ts

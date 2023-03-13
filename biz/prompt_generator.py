@@ -14,6 +14,8 @@ def gen_new_session_context(user_name: str, text: str) -> model_obj.Messages:
     ebd_res = embedding.create_embedding([text])
     index_res = client.index_client.query(ebd_res.data[0]["embedding"], namespace=user_name, top_k=3, include_metadata=True)
     res_obj = object.QueryRes(index_res)
+    logger.info("query from index: length: %d", len(res_obj.matches))
+
     context_list = res_obj.get_efficient_val()
     context = '\n'.join(context_list)
 
