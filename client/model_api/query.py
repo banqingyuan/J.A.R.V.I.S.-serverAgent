@@ -20,7 +20,8 @@ def completion(prompt):
 
 def chat(msg) -> object.ChatResponse:
     resp = model_api.openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        # model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=msg
     )
     return object.ChatResponse(resp)

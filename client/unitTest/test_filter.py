@@ -1,8 +1,7 @@
 import biz.action_filter
 
 def test_action_filter():
-    msg_with_action = "你好啊，我是[MS04]，你是谁啊？"
-    print(biz.action_filter.action_filter(msg_with_action))
+    biz.action_filter.action_music("告白气球.mp3")
 
 
 if __name__ == "__main__":
